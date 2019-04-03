@@ -26,10 +26,15 @@ public class LoginProcessControllerServlet extends HttpServlet {
 		String email = req.getParameter("f1");
 		String password = req.getParameter("f2");
 		
+		
+		
 		Customer customer = new Customer();
 		customer.setEmail(email);
 		customer.setPassword(password);
 		
+		HttpSession ses1 = req.getSession();
+		ses1.setAttribute("Email", email);
+		ses1.setAttribute("pwd", password);
 		CustomerService customerService = new CustomerService();
 		boolean status = customerService.loginCustomer(customer);	
 		if(status) {
