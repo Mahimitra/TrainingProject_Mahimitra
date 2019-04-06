@@ -1,4 +1,4 @@
-package com.tadigital.ecommerce.customer.servlet;
+	package com.tadigital.ecommerce.customer.servlet;
 
 import java.io.*;
 import java.util.*;
@@ -19,49 +19,59 @@ public class RegistrationProcessControllerServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("RegistrationForm.html");
-		rd.forward(req, resp);
+		try {
+			rd.forward(req, resp);
+		} catch (ServletException | IOException e) {
+
+			e.printStackTrace();
+		}
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		String name[]=req.getParameter("f1").split(" ");
+
+		String name[] = req.getParameter("f1").split(" ");
 		String firstName = name[0];
-	
+
 		String lastName;
-		if(name.length==1) {lastName="null";}
-		else {lastName=name[1];}
-		//String dateOfJoining = req.getParameter("f3");
+		if (name.length == 1) {
+			lastName = null;
+		} else {
+			lastName = name[1];
+		}
+
 		String email = req.getParameter("f2");
 		String password = req.getParameter("f3");
-		
+
 		Customer customer = new Customer();
 		customer.setFirstName(firstName);
 		customer.setLastName(lastName);
-		
-		/*String[] date = dateOfJoining.split("-");
-		int yyyy = Integer.parseInt(date[0]);
-		int mm = Integer.parseInt(date[1]);
-		
-		int dd = Integer.parseInt(date[2]);
-		employee.setDateOfJoining(new GregorianCalendar(yyyy, mm, dd));
-		
-		*/
+
 		customer.setEmail(email);
 		customer.setPassword(password);
-		
+
 		CustomerService customerService = new CustomerService();
 		boolean status = customerService.registerCustomer(customer);
-		if(status) {
+		if (status) {
 			HttpSession ses = req.getSession();
 			ses.setAttribute("RegStatus", "true");
-			RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
-			rd.forward(req, resp);
-		} 
-		else {
+			RequestDispatcher rd = req.getRequestDispatcher("signinsignup.jsp");
+			try {
+				rd.forward(req, resp);
+			} catch (ServletException | IOException  e) {
+				
+				e.printStackTrace();
+			} 
+		} else {
 			HttpSession ses = req.getSession();
 			ses.setAttribute("RegStatus", "false");
-		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
-		rd.forward(req, resp);}
+			RequestDispatcher rd = req.getRequestDispatcher("signinsignup.jsp");
+			try {
+				rd.forward(req, resp);
+			} catch (ServletException | IOException  e) {
+				
+				e.printStackTrace();
+			} 
+		}
 	}
 }
