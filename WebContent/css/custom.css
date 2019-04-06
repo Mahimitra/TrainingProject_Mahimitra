@@ -24,6 +24,7 @@
 	align-content: center;
 	
 	
+	
 }
 
 #b{
@@ -110,3 +111,30 @@ ul.nav li
 	height: 150px;
 }
 
+
+.ml
+{
+	padding: 15px;
+}
+
+.mar-left
+{
+	margin-left: 9px;
+	margin-right: 9px;
+}
+
+.dark{
+	background-color: black;
+	color: white;
+}
+.prod img{
+	height: 160px;
+	width: 120px;
+	margin-left: 45px;
+	margin-right: 50px;
+}
+
+
+.foot{
+	color:lightSkyBlue;
+}
