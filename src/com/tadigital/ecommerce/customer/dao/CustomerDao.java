@@ -30,9 +30,7 @@ public class CustomerDao extends Dao {
 				customer.setId(rs.getInt(1));
 				customer.setFirstName(rs.getString(2));
 				customer.setLastName(rs.getString(3));
-				//Calendar doj = new GregorianCalendar();
-				//doj.setTimeInMillis(rs.getDate(4).getTime());
-				//employee.setDateOfJoining(doj);
+				
 			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
@@ -70,40 +68,27 @@ public class CustomerDao extends Dao {
 		
 		return status;
 	}
-	
-	
-	/*public ArrayList<Employee> selectAllEmployees() {
-		ArrayList<Employee> employeeList = new ArrayList<>(); 
-		
+
+	public boolean changePassword(Customer customer, String newpwd) {
 		Connection con = openConnection();
 		Statement stmt = openStatement(con);
-		ResultSet rs = null;
-		
 		try {
-			String sql = "SELECT * FROM employee_information";
+			String sql = "UPDATE customer_info SET password='"+newpwd+"'WHERE email='"+customer.getEmail()+"'";
 			
-			rs = stmt.executeQuery(sql);
-			while(rs.next()) {
-				Employee employee = new Employee();				
-				employee.setId(rs.getInt(1));
-				employee.setFirstName(rs.getString(2));
-				employee.setLastName(rs.getString(3));
-				Calendar doj = new GregorianCalendar();
-				doj.setTimeInMillis(rs.getDate(4).getTime());
-				employee.setDateOfJoining(doj);
-				employee.setEmail(rs.getString(5));
-				employee.setPassword(rs.getString(6));
-				
-				employeeList.add(employee);
+			int rows = stmt.executeUpdate(sql);
+			if(rows != 0) {
+				return true;
 			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		} finally {
 			closeStatement(stmt);
-			closeResultSet(rs);
 			closeConnection(con);
 		}
 		
-		return employeeList;
-	}*/
+		return false;
+	}
+	
+	
+	
 }
