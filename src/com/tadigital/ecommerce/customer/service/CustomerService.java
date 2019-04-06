@@ -15,11 +15,17 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+
+
 import com.tadigital.ecommerce.customer.dao.CustomerDao;
 import com.tadigital.ecommerce.customer.entity.Customer;
 
 public class CustomerService {
-	protected static final String EMAIL = "chnagamani05@gmail.com";
+	
 	protected static final String CID = "Content-ID";
 	CustomerDao customerDao = new CustomerDao();
 
@@ -43,21 +49,37 @@ public class CustomerService {
 	}
 
 	public String sendEmail(String name, String mail) {
-		String status = "NOT SENT";
+		
 		Properties properties = new Properties();
-		properties.put("mail.smtp.host", "smtp.gmail.com");
-		properties.put("mail.smtp.socketFactory.port", "465");
-		properties.put("mail.smtp.ssl.checkserveridentity", true);
-		properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		properties.put("mail.smtp.auth", "true");
-		properties.put("mail.smtp.port", "465");
+		InputStream inputStream = getClass().getResourceAsStream("email.properties");
+		try {
+			properties.load(inputStream);
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		
+		String host=properties.getProperty("host");
+		String port1=properties.getProperty("port1");
+		String cls=properties.getProperty("cls");
+		String auth=properties.getProperty("authentication");
+		String port2=properties.getProperty("port2");
+		String username=properties.getProperty("sender");
+		String password=properties.getProperty("password");
+		 final String EMAIL = username;
+		String status = "NOT SENT";
+		
+		properties.put("mail.smtp.host",host);
+		properties.put("mail.smtp.socketFactory.port",port1);
+		properties.put("mail.smtp.socketFactory.class", cls);
+		properties.put("mail.smtp.auth",auth);
+		properties.put("mail.smtp.port", port2);
 
 		// CONNECT TO MAIL SERVER
 
 		Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(EMAIL, "9652841738");
+				return new PasswordAuthentication(EMAIL,password);
 			}
 		});
 		try {
@@ -79,7 +101,7 @@ public class CustomerService {
 
 			mbp1 = new MimeBodyPart();
 			DataSource fds = new FileDataSource(
-					"D:\\Trainee Engineers March 2019\\workspace\\TrainingProject_Mahimitra\\WebContent\\images\\welcome.jpg");
+					"D:\\Trainee Engineers March 2019\\workspace\\TrainingProject_Mahimitra\\WebContent\\images\\download.jfif");
 			mbp1.setDataHandler(new DataHandler(fds));
 			mbp1.setHeader(CID, "<image>");
 			mp.addBodyPart(mbp1);
@@ -106,7 +128,7 @@ public class CustomerService {
 
 	public boolean sendErrorMail(String est) {
 
-		boolean status = false;
+		
 		// MAIL SERVER CONFIGURATION
 		Properties properties = new Properties();
 		properties.put("mail.smtp.host", "smtp.gmail.com");
@@ -120,7 +142,7 @@ public class CustomerService {
 		Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(EMAIL, "9652841738");
+				return new PasswordAuthentication("chnagamani05@gmail.com", "9652841738");
 			}
 		});
 		try {
@@ -149,12 +171,17 @@ public class CustomerService {
 
 			// SEND MAIL
 			Transport.send(mimeMessage);
-			status = true;
+			return true;
 
 		} catch (MessagingException mex) {
 			mex.printStackTrace();
 		}
-		return status;
+		return false;
 
 	}
+	
+
+	
+
+	
 }
