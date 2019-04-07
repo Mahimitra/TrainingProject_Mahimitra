@@ -179,6 +179,11 @@ public class CustomerService {
 		return false;
 
 	}
+
+	public boolean registerPersonalDetails(Customer customer) {
+		customerDao.registerPersonalDetails(customer);
+		return false;
+	}
 	
 
 	
