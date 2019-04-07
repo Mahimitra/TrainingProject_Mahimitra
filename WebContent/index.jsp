@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Insert title here</title>
+<title>Training Project</title>
 
 <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="fontawesome-free-5.5.0-web/css/all.css">
@@ -26,26 +26,10 @@
 		<%@ include file="nav2.html"%>
 		<!-- ROW2 END-->
 
-		<!-- ROW3 START -->
-
-		<div class="row row3">
-			<div class="col-md-1"></div>
-			<div class="col-md-1" id="b">
-				<a href="#" style="color: black"><h3>
-						<b>MyAccount 
-					</h3> </b></a>
-			</div>
-
-			<div class="col-md-6"></div>
-			<div class="col-md-3" id="b" style="padding-top: 2.1em;">
-				<a href="#">HOME</a>/ <a href="#" style="color: black">MyAccount</a>
-			</div>
-		</div>
-
-		<!-- ROW3 END -->
 
 
-		<!-- 4 ROW START -->
+
+		<!-- 3rd ROW START -->
 
 		<div class="container-fluid">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -418,15 +402,16 @@
 			</div>
 		</div>
 
-		<!-- 4 ROW END -->
+		<!-- 3rd ROW END -->
 
-		<!--  ROW5 START-->
+		<!--  ROW4 START-->
 		<%@ include file="footer1.html"%>
-		<!-- ROW5 END -->
-		<!-- 6 ROW START -->
+		<!-- ROW4 END -->
+		
+		<!-- 5 ROW START -->
 		<%@ include file="footer.html"%>
-
-		<!-- 6 ROW END -->
+		<!-- 5 ROW END -->
+		
 		<script src="js/jquery-3.3.1.js"></script>
 		<script src="bootstrap/js/bootstrap.js"></script>
 </body>
