@@ -19,7 +19,7 @@
 		String res = null;
 		HttpSession ses = request.getSession(false);
 
-		if (ses == null | !request.isRequestedSessionIdValid()) {
+		if (ses == null | !request.isRequestedSessionIdValid() ) {
 	%>
 
 
@@ -42,10 +42,9 @@
 	<%
 		} else {
 			String name = (String) session.getAttribute("name");
-			if (name != null)
+			if (name != null){
 				res = "Welcome " + name;
-			else
-				res = "welcome";
+			
 	%>
 
 
@@ -58,9 +57,10 @@
 					class="fas fa-caret-down"></i>
 			</button>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="customerinfo.jsp">My account</a> <br>
-				<a class="dropdown-item" href="customerinfo.jsp">Change Password</a>
-				<br> <a class="dropdown-item" href="logout.jsp">Logout</a><br>
+				<a class="dropdown-item" href="customerinfo.jsp">&nbsp; My
+					account</a> <br> <a class="dropdown-item" href="customerinfo.jsp">&nbsp;
+					Change Password </a> <br> <a class="dropdown-item"
+					href="logout.jsp"> &nbsp;Logout </a><br>
 			</div>
 		</div>
 	</div>
@@ -68,9 +68,13 @@
 
 
 	<%
-		}
+		}else{
 	%>
-
+	<div class="col-md-3" id="a">
+	<h5 >Welcome customer</h5>
+	</div>
+	
+<%}} %>
 	<div class="col-md-2"></div>
 
 	<div class="col-md-2 icon">
