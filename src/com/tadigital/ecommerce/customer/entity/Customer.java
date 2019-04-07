@@ -11,11 +11,21 @@ public class Customer {
 
 	private String email;
 	private String password;
+	private String gender;
+	private String Address;
+	private String City;
+	private long Zip;
+	private String State;
+	private String Country;
+	private long Contact;
+	
+	
+	
 	
 	public Customer() {
 	}
 	
-	public Customer(int id, String firstName, String lastName, Calendar dateOfJoining, String email, String password) {
+	public Customer(int id, String firstName, String lastName, String email, String password) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -65,4 +75,64 @@ public class Customer {
 				lastName +  ", email=" + email + 
 				", password=" + password + "]";
 	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getAddress() {
+		return Address;
+	}
+
+	public void setAddress(String address) {
+		Address = address;
+	}
+
+	public String getCity() {
+		return City;
+	}
+
+	public void setCity(String city) {
+		City = city;
+	}
+
+	public long getZip() {
+		return Zip;
+	}
+
+	public void setZip(long zip) {
+		Zip = zip;
+	}
+
+	public String getState() {
+		return State;
+	}
+
+	public void setState(String state) {
+		State = state;
+	}
+
+	public String getCountry() {
+		return Country;
+	}
+
+	public void setCountry(String country) {
+		Country = country;
+	}
+
+	public long getContact() {
+		return Contact;
+	}
+
+	public void setContact(long contact) {
+		Contact = contact;
+	}
+
+
+
+
 }
