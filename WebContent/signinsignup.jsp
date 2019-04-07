@@ -18,7 +18,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-		
+
 		<!-- ROW1 start -->
 
 		<%@ include file="nav1.jsp"%>
@@ -34,15 +34,16 @@
 		<div class="row row3">
 			<div class="col-md-1"></div>
 			<div class="col-md-4" id="b">
-				<a href="#" style="color: black"><h3>
-						<b>NEW ACCOUNT / SIGNIN 
-					</h3> </b></a>
+				<h3 style="color:black;">
+					<b>NEW ACCOUNT / SIGNIN 
+				</h3>
+				</b>
 			</div>
 
 			<div class="col-md-3"></div>
 			<div class="col-md-3" id="b" style="padding-top: 2.1em;">
-				<a href="index.jsp">HOME</a>/ <a href="#" style="color: black">
-					NEW ACCOUNT / SIGN IN</a>
+				<p style="color:black" ><a href="index.jsp" >HOME</a> / 
+					NEW ACCOUNT / SIGN IN</p>
 			</div>
 		</div>
 
@@ -71,7 +72,7 @@
 							if (res1.equals("true")) {
 					%>
 					<div class=" row alert alert-success" role="alert">
-						<strong>Well done!</strong> Registration is Successfull...
+						<strong>Well done!</strong> Registration is Success...
 					</div>
 					<%
 						} else {
