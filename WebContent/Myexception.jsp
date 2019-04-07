@@ -32,17 +32,17 @@
 
 		<div class="row row3">
 			<div class="col-md-1"></div>
-			<div class="col-md-1" id="b">
-				<a href="#" style="color: black"><h3>
-						<b>MyAccount 
-					</h3> </b></a>
+			<div class="col-md-2" id="b">
+				<h3>
+					<b>Exception Page</b>
+				</h3>
 			</div>
 
 			<div class="col-md-6"></div>
 			<div class="col-md-3" id="b" style="padding-top: 2.1em;">
-				<a href="index.jsp">HOME</a>/ 
-				<a href="customerinfo.jsp"
-					style="color: black">MyAccount</a>
+				<p>
+					<a href="index.jsp">HOME</a> / MyAccount
+				</p>
 			</div>
 		</div>
 
@@ -63,10 +63,9 @@
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-2">
-						<button class="btn btn-info btn-design">
-							<span class="glyphicon glyphicon-home"></span> Home
-						</button>
-						<br> <br>
+						<a href="index.jsp"><button class="btn btn-info btn-design">
+								<span class="glyphicon glyphicon-home"></span> Home
+							</button></a> <br> <br>
 					</div>
 					<div class="col-md-2">
 						<form action="report" method="post">
